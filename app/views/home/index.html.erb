@@ -1,2 +1,23 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<%= render partial: "shared/header" %>
+上ヘッダー
+
+<div class="home-main">
+  <div class="home">
+    ようこそ
+  </div>
+  <div class="staff-login">
+    職員ログイン画面へ
+  </div>
+  <div class="staff-signup">
+    職員新規登録画面へ
+  </div>
+  <div class="family-login">
+    患者様ご家族ログイン画面へ
+  </div>
+  <div class="family-signup">
+    患者様ご家族新規登録画面へ
+  </div>
+</div>
+
+下フッター
+<%= render partial: "shared/footer" %>
