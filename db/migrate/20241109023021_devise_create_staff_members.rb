@@ -7,8 +7,9 @@ class DeviseCreateStaffMembers < ActiveRecord::Migration[7.0]
       t.integer :staff_number,       null: false
       t.string  :staff_last_name,    null: false
       t.string  :staff_first_name,   null: false
-      t.integer :staff_department,   null: false
-      t.integer :staff_affiliation,  null: false
+      t.integer :staff_department_id,   null: false
+      t.integer :staff_affiliation_id,  null: false
+      t.string  :email,              null: false, default: ""
       t.string  :encrypted_password, null: false, default: ""
 
       ## Recoverable
@@ -41,6 +42,7 @@ class DeviseCreateStaffMembers < ActiveRecord::Migration[7.0]
     end
 
     add_index :staff_members, :staff_number,         unique: true
+    add_index :staff_members, :email,                unique: true
     add_index :staff_members, :reset_password_token, unique: true
     # add_index :staff_members, :confirmation_token,   unique: true
     # add_index :staff_members, :unlock_token,         unique: true
