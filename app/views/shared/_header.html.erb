@@ -1,12 +1,14 @@
-<div clall="header">
+<div class="header">
   <div class="header-main">
     tech hospital
   </div>
   <div class="navi-bar">
     <div class="navi-bar-list">
       <ul>
-        <li><%= current_staff_member.staff_department.name + " " + current_staff_member.staff_last_name + current_staff_member.staff_first_name %></li>
-        <li>ログアウト</li>
+        <li>
+          <%= "#{current_staff_member.staff_department.name} #{current_staff_member.staff_last_name} #{current_staff_member.staff_first_name}" %>
+        </li>
+        <li><%= link_to 'ログアウト', destroy_staff_member_session_path, data: {turbo_method: :delete}, class: :logout %></li>
       </ul>
     </div>
   </div>
