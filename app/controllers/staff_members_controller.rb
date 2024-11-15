@@ -1,5 +1,4 @@
 class StaffMembersController < ApplicationController
 
 
-
 end

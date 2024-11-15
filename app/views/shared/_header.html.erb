@@ -4,7 +4,10 @@
   </div>
   <div class="navi-bar">
     <div class="navi-bar-list">
-      ログアウト
+      <ul>
+        <li><%= current_staff_member.staff_department.name + " " + current_staff_member.staff_last_name + current_staff_member.staff_first_name %></li>
+        <li>ログアウト</li>
+      </ul>
     </div>
   </div>
   <%# 消す %>
