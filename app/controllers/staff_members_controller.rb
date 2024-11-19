@@ -1,6 +1,6 @@
 class StaffMembersController < ApplicationController
 
-  def dashboard
+  def index
   end
 
 end
