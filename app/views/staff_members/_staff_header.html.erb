@@ -1,7 +1,19 @@
 <header class="staff-header">
   <div class="staff-header-bar">
     <div>スタッフページ</div>
-    <%= "#{current_staff_member.staff_department.name} #{current_staff_member.staff_last_name} #{current_staff_member.staff_first_name}" %>
-    <%= link_to 'ログアウト', destroy_staff_member_session_path, data: {turbo_method: :delete}, class: :logout %>
+      <div class="header-staff-profile>
+        <div class="header-staff-department">
+          <%= "#{current_staff_member.staff_department.name}" %>
+        </div>
+        <div class="hearder-staff-name">
+          <%= "#{current_staff_member.staff_last_name} #{current_staff_member.staff_first_name}" %>
+        </div>
+      </div>
+      <div class="staff-logo">
+        <%= link_to '患者一覧ページへ', staff_members_path %>
+        <%= link_to '新規患者登録ページへ', new_patient_path %>
+        <%= link_to 'ログアウト', destroy_staff_member_session_path, data: {turbo_method: :delete}, class: :logout %>
+      </div>
   </div>
+  # ここまでスタッフヘッダー
 </header>
