@@ -1,7 +1,7 @@
 class StaffMembersController < ApplicationController
 
   def index
-    @patients = Patient.order("floor DESC")
+    @patients = Patient.order(:room)
   end
 
 end
