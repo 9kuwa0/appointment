@@ -13,6 +13,9 @@ class PatientsController < ApplicationController
     end
   end
 
+  def show
+    @patient = Patient.find(params[:id])
+  end
 
   private
 
