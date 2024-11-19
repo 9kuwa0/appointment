@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_09_023021) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_19_021639) do
+  create_table "patients", charset: "utf8mb3", force: :cascade do |t|
+    t.integer "patient_number", null: false
+    t.string "patient_last_name", null: false
+    t.string "patient_first_name", null: false
+    t.string "patient_last_name_kana", null: false
+    t.string "patient_first_name_kana", null: false
+    t.date "birthday", null: false
+    t.integer "floor"
+    t.integer "room"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "staff_members", charset: "utf8mb3", force: :cascade do |t|
     t.integer "staff_number", null: false
     t.string "staff_last_name", null: false
