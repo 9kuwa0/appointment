@@ -1,8 +1,30 @@
-<div class="main">
-  <div class="main-bar">
-    teck hp
+
+<header class="header">
+  <div class="header-main">
+    <%= link_to 'tech hospital', root_path %>
   </div>
-  <div class="sub-bar">
-    ログアウト
+  <div class="navi-bar">
+    <div class="navi-bar-list">
+      <ul>
+        <% if staff_member_signed_in? %>
+        <li>
+          <%= "#{current_staff_member.staff_department.name} #{current_staff_member.staff_last_name} #{current_staff_member.staff_first_name}" %>
+        </li>
+        <li>
+          <%= link_to 'ログアウト', destroy_staff_member_session_path, data: {turbo_method: :delete}, class: :logout %>
+        </li>
+
+        <%# <% elsif family_signed_in? %>
+        <%# <li> %>
+          <%# 処理を書く %>
+        <%# </li> %>
+         <%# <li>
+          <%= link_to 'ログアウト', destroy_#_session_path, data: {turbo_method: :delete}, class: :logout %>
+        <%# #</li> %>
+        <% end %>
+      </ul>
+    </div>
   </div>
-</div>
+  <%# 消す %>
+  # ここまでヘッダー
+</header>

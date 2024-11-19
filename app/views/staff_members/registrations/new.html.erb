@@ -1,0 +1,50 @@
+<%= render "shared/header" %>
+
+<div class="main">
+  <div class="staff-form">
+    <div class="page-haading">職員新規登録ページ</div>
+
+    <%# <% if カレントユーザーサインインを記入%>
+    
+    <%= form_with model: @staff_member, url: new_staff_member_registration_path, local: true do |f| %>
+
+      <%= render "shared/error_message", model: f.object %>
+
+      <div class="staff-form-field">
+        <label class="form-name">職員ID</label>
+        <%= f.text_field :staff_number, class:"input-field", id:"staff_number", placeholder:"4文字の数字" %>
+      </div>
+      <div class="staff-form-field">
+        <label class="form-name">姓</label>
+        <%= f.text_field :staff_last_name, class:"input-field", id:"staff_last_name" %>
+      </div>
+      <div class="staff-form-field">
+        <label class="form-name">名</label>
+        <%= f.text_field :staff_first_name, class:"input-field", id:"staff_first_name" %>
+      </div>
+      <div class="staff-form-field">
+        <label class="form-name">部署</label>
+        <%= f.collection_select(:staff_department_id, StaffDepartment.all, :id, :name, {}, { class:"input-field", id:"staff_department" }) %>
+      </div>
+      <div class="staff-form-field">
+        <label class="form-name">所属</label>
+        <%= f.collection_select(:staff_affiliation_id, StaffAffiliation.all, :id, :name, {}, { class:"input-field", id:"staff_affiliation" }) %>
+      </div>
+      <div class="staff-form-field">
+        <label class="form-name">メールアドレス</label>
+        <%= f.email_field :email, class:"input-field", id:"staff_email" %>
+      </div>
+      <div class="staff-form-field">
+        <label class="form-name">パスワード</label>
+        <%= f.password_field :password, class:"input-field", id:"staff_password", placeholder:"6文字以上の半角英数" %>
+      </div>
+      <div class="staff-form-field">
+        <label class="form-name">確認用パスワード</label>
+        <%= f.password_field :password_confirmation, class:"input-field", id:"password_confirmation", placeholder:"同じパスワードを入力してください" %>
+      </div>
+      <div>
+        <%= f.submit "新規登録", class:"register-btn" %>
+      </div>
+
+    <% end %>
+<%= render "shared/footer" %>

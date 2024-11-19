@@ -1,23 +1,16 @@
-<%= render partial: "shared/header" %>
-上ヘッダー
+<%= render "shared/header" %>
 
-<div class="home-main">
-  <div class="home">
-    ようこそ
-  </div>
-  <div class="staff-login">
-    職員ログイン画面へ
-  </div>
-  <div class="staff-signup">
-    職員新規登録画面へ
-  </div>
-  <div class="family-login">
-    患者様ご家族ログイン画面へ
-  </div>
-  <div class="family-signup">
-    患者様ご家族新規登録画面へ
-  </div>
+<div class="mailn">
+  <ul class="lists">
+    <li><%= link_to '職員新規登録', new_staff_member_registration_path, class: "staff-btn" %></li>
+    <li><%= link_to '職員ログイン', new_staff_member_session_path, class: "staff-btn" %></li>
+    <li class="family-btn">
+      患者様ご家族新規登録
+    </li>
+    <li class="family-btn">
+      患者様ご家族ログイン
+    </li>
+  </ul>
 </div>
 
-下フッター
-<%= render partial: "shared/footer" %>
+<%= render "shared/footer" %>

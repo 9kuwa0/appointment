@@ -34,58 +34,59 @@ https://docs.google.com/spreadsheets/d/1jGwedmSThwS4Qy18OXHkuSJDIkHuTig8F3z3t-nI
 
 ## テーブル
 ### staff_members
-| Column  | Type     | Options      |
-|---------|----------|--------------|
-|staff_number| integer | null: false, unique: true|
-|staff_name| string    |null: false,   |
-|staff_department| string | null: false|
-|staff_affiliation| string | null: false|
-|password| string | null: false|
+| Column               | Type     | Options                   |
+|----------------------|----------|---------------------------|
+| staff_number         | integer  | null: false, unique: true |
+| staff_last_name      | string   | null: false               |
+| staff_first_name     | string   | null: false               |
+| staff_department_id  | integer  | null: false               |
+| staff_affiliation_id | integer  | null: false               |
+| password             | string   | null: false               |
 ### Association
 - has_many :patients
 
 ### patients
-| Column  | Type     | Options      |
-|---------|----------|--------------|
-|patient_number| integer| null: false, unique: true|
-|patient_last_name| string | null: false|
-|patient_first_name| string| null: false |
-|patient_last_name_kana| string | null: false|
-|patient_first_name_kana| string |null: false|
-|birthday | date | null: false|
-|floor | integer |   |
-|room | integer |   |
+| Column                  | Type    | Options                   |
+|-------------------------|---------|---------------------------|
+| patient_number          | integer | null: false, unique: true |
+| patient_last_name       | string  | null: false               |
+| patient_first_name      | string  | null: false               |
+| patient_last_name_kana  | string  | null: false               |
+| patient_first_name_kana | string  | null: false               |
+| birthday                | date    | null: false               |
+| floor                   | integer |                           |
+| room                    | integer |                           |
 ### Association
 - belongs_to :staff_member
 - has_many :families, through: :family_patients
 
 ### families
-| Column  | Type     | Options      |
-|---------|----------|--------------|
-|family_last_name| string | null: false|
-|family_first_name| string | null: false |
-|family_last_name_kana| string| null: false |
-|family_first_name_kana |string|null: false|
-|email | string| null: false, unique: true|
-|password| string |null: false|
+| Column                 | Type   | Options                   |
+|------------------------|--------|---------------------------|
+| family_last_name       | string | null: false               |
+| family_first_name      | string | null: false               |
+| family_last_name_kana  | string | null: false               |
+| family_first_name_kana | string | null: false               |
+| email                  | string | null: false, unique: true |
+| password               | string | null: false               |
 ### Association
 - has_many :patients, through: :family_patients
 
 ### family_patients
-| Column  | Type     | Options      |
-|---------|----------|--------------|
-|family_id|references|null: false, foreign_key: true|
-|patient_id|references|null: false, foreign_key: true|
+| Column     | Type       | Options                        |
+|------------|------------|--------------------------------|
+| family_id  | references | null: false, foreign_key: true |
+| patient_id | references | null: false, foreign_key: true |
 #### Association
 - has_one :promises
 - belongs_to :family
 - belongs_to :patient
 
 ### promises
-| Column  | Type     | Options      |
-|---------|----------|--------------|
-|day  | date| null: false|
-|time | integer| null: false, activehash|
+| Column  | Type     | Options     |
+|---------|----------|-------------|
+| day     | date     | null: false |
+| time    | integer  | null: false |
 ### Association
 - belongs_to :family_patients
 
