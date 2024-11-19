@@ -3,9 +3,9 @@
   <div class="patients">
     患者登録
   </div>
-  <div calss="patient-form">
-  <%= form_with model: @patient, url: new_patient_path, local: true do |f| %>
-  
+  <div class="patient-form">
+    <%= form_with model: @patient, url: patients_path, local: true do |f| %>
+    
     <%= render "shared/error_message", model: f.object %>
 
     <div class="patient-form-field">
@@ -22,11 +22,11 @@
     </div>
     <div class="patient-form-field">
       <label class="form-name">セイ</label>
-      <%= f.text_field :patient_last_name_kana, class:"input_fierd", id:"patient_last_name_kana", placeholder:"全角カタカナ" %>
+      <%= f.text_field :patient_last_name_kana, class:"input_field", id:"patient_last_name_kana", placeholder:"全角カタカナ" %>
     </div>
     <div class="patient-form-field">
       <label class="form-name">メイ</label>
-      <%= f.text_field :patient_first_name_kana, class:"input_fierd", id:"patient_first_name_kana", placeholder:"全角カタカナ" %>
+      <%= f.text_field :patient_first_name_kana, class:"input_field", id:"patient_first_name_kana", placeholder:"全角カタカナ" %>
     </div>
     <div class="patient-form-field">
       <label class="form-name">誕生日</label>
@@ -34,11 +34,14 @@
     </div>
     <div class="patient-form-field">
       <label class="form-name">病棟</label>
-      <%= f.text_field :floor, class:"floor", id:"floor", placeholder:"数字のみ" %>階
+      <%= f.text_field :floor, class:"floor", id:"floor", placeholder:"半角数字のみ" %>階
     </div>
     <div class="patient-form-field">
       <label class="form-name">病室</label>
-      <%= f.text_field :room, class:"room", id:"room", placeholder:"数字のみ" %>号室
+      <%= f.text_field :room, class:"room", id:"room", placeholder:"半角数字のみ" %>号室
+    </div>
+    <div class="patient-form-field">
+      <%= f.submit "登録する", class:"patient-btn" %>
     </div>
   <% end %>
   </div>
