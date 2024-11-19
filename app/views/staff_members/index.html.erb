@@ -1,4 +1,5 @@
 <%= render "staff_header" %>
+
 <div>患者一覧</div>
   <% if @patients.any? %>
 <table>
@@ -8,7 +9,9 @@
       <th>部屋</th>
       <th>患者ID</th>
       <th>名前</th>
+      <th>フリガナ</th>
       <th>誕生日</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -18,7 +21,9 @@
         <td><%= patient.room %></td>
         <td><%= patient.patient_number %></td>
         <td><%= "#{patient.patient_last_name} #{patient.patient_first_name}" %></td>
+        <td><%= "#{patient.patient_last_name_kana} #{patient.patient_first_name_kana}" %>
         <td><%= patient.birthday %></td>
+        <td><%= link_to "編集する", patient_path(patient) %>
       </tr>
     <% end %>
   </tbody>
