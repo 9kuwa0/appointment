@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   resources :staff_members, only: [:destroy]
+  resources :patients, only: [:new, :create]
 
 
 
