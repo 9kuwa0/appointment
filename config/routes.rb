@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   resources :staff_members, only: [:index]
-  resources :patients, only: [:new, :create, :show, :edit, :update]
+  resources :patients, only: [:new, :create, :show, :edit, :update, :destroy]
 
 
 

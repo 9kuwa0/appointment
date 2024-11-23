@@ -14,7 +14,7 @@
       <%= link_to "編集する", edit_patient_path(@patient) %>
     </div>
     <div class="patient-delete-btn" >
-      <%= link_to "削除する", "#" %>
+      <%= link_to "削除する", patient_path(@patient.id), data: {turbo_method: :delete} %>
     </div>
   </div>
 </div>
