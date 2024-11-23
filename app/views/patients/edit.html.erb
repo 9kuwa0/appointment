@@ -4,7 +4,7 @@
     患者情報修正
   </div>
   <div class="patient-form">
-    <%= form_with model: @patient, url: patients_path, local: true do |f| %>
+    <%= form_with model: @patient, local: true do |f| %>
     
     <%= render "shared/error_message", model: f.object %>
 
