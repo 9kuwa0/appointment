@@ -23,7 +23,7 @@
         <td><%= "#{patient.patient_last_name} #{patient.patient_first_name}" %></td>
         <td><%= "#{patient.patient_last_name_kana} #{patient.patient_first_name_kana}" %>
         <td><%= patient.birthday %></td>
-        <td><%= link_to "編集する", patient_path(patient) %>
+        <td><%= link_to "詳細・編集ページへ", patient_path(patient) %>
       </tr>
     <% end %>
   </tbody>
