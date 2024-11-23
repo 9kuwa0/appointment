@@ -1,6 +1,6 @@
 class PatientsController < ApplicationController
 
-  before_action :set_patient, only: [:show, :edit, :update]
+  before_action :set_patient, only: [:show, :edit, :update, :destroy]
 
   def new
     @patient = Patient.new
@@ -27,6 +27,11 @@ class PatientsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @patient.destroy
+    redirect_to staff_member_index_path
   end
 
   private
