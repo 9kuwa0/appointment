@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  devise_for :families
   devise_for :staff_members, controllers: { registrations: 'staff_members/registrations' }
 
   get 'staff_member/index', to: 'staff_members#index', as: :staff_member_index
