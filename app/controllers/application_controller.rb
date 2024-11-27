@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_staff_member!
 
   protected
 
@@ -14,7 +13,12 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(resource_or_scope)
-    if resource_or_scope == (:staff_member || :family)
+    case resource_or_scope
+    when :staff_member
+      root_path # スタッフログイン画面
+    when :family
+      root_path # 家族ログイン画面
+    else
       root_path
     end
   end
