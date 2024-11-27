@@ -1,2 +1,0 @@
-class Promise < ApplicationRecord
-end
