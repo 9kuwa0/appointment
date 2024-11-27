@@ -4,7 +4,8 @@ class Family < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many patients, through: :promise
+  has_many :promises
+  has_many :patients, through: :promises
 
   with_options presence: true do
     validates :family_last_name
