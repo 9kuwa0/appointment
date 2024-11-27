@@ -9,6 +9,6 @@ Rails.application.routes.draw do
 
   resources :staff_members, only: [:index]
   resources :patients, only: [:new, :create, :show, :edit, :update, :destroy]
-
+  resources :promise, only: [:new, :create]
 
 end
