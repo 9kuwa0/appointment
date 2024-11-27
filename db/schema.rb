@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_23_114745) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_27_105555) do
   create_table "families", charset: "utf8mb3", force: :cascade do |t|
     t.string "family_last_name", null: false
     t.string "family_first_name", null: false
@@ -38,6 +38,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_23_114745) do
     t.integer "room"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "promises", charset: "utf8mb3", force: :cascade do |t|
+    t.bigint "family_id_id", null: false
+    t.bigint "patient_id_id", null: false
+    t.date "day", null: false
+    t.time "integer", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["family_id_id"], name: "index_promises_on_family_id_id"
+    t.index ["patient_id_id"], name: "index_promises_on_patient_id_id"
   end
 
   create_table "staff_members", charset: "utf8mb3", force: :cascade do |t|
