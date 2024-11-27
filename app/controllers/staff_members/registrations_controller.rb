@@ -1,6 +1,9 @@
 class StaffMembers::RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  def new
+    @staff_member = StaffMember.new
+  end
 
   protected
 

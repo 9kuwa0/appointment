@@ -1,6 +1,7 @@
 class Patient < ApplicationRecord
 
   belongs_to :staff_member, optional: true
+  # has_many families, through: :family_patients
 
   with_options presence: true do
     validates :patient_number, uniqueness: true
