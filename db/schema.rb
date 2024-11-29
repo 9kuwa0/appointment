@@ -41,14 +41,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_27_105555) do
   end
 
   create_table "promises", charset: "utf8mb3", force: :cascade do |t|
-    t.bigint "family_id_id", null: false
-    t.bigint "patient_id_id", null: false
+    t.bigint "family_id", null: false
+    t.bigint "patient_id", null: false
     t.date "day", null: false
-    t.integer "time", null: false
+    t.integer "meeting_time_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["family_id_id"], name: "index_promises_on_family_id_id"
-    t.index ["patient_id_id"], name: "index_promises_on_patient_id_id"
+    t.index ["family_id"], name: "index_promises_on_family_id"
+    t.index ["patient_id"], name: "index_promises_on_patient_id"
   end
 
   create_table "staff_members", charset: "utf8mb3", force: :cascade do |t|
@@ -69,4 +69,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_27_105555) do
     t.index ["staff_number"], name: "index_staff_members_on_staff_number", unique: true
   end
 
+  add_foreign_key "promises", "families"
+  add_foreign_key "promises", "patients"
 end
