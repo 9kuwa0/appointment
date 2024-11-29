@@ -4,7 +4,7 @@ class Family < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :promises
+  has_many :promises, dependent: :destroy
   has_many :patients, through: :promises
 
   with_options presence: true do
