@@ -1,0 +1,19 @@
+<%= render "families/family_header" %>
+
+<div>promise index page</div>
+
+<div>面会予約一覧</div>
+<%= link_to "面会予約へ", search_promises_path %>
+<% if @promises.present?%>
+<ul>
+  <% @promises.each do |promise| %>
+    <li>
+      <strong>患者:</strong> <%= "#{promise.patient.patient_last_name_kana promise.patient.patient_first_name_kana}" %> |
+      <strong>面会日:</strong> <%= promise.day %> |
+      <strong>時間:</strong> <%= promise.time.name %>
+    </li>
+  <% end %>
+<% end %>
+</ul>
+
+<%= render "/shared/footer"%>
