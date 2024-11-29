@@ -17,7 +17,8 @@ class StaffAffiliation < ActiveHash::Base
     { id: 14, name: "リハビリテーション科"},
     { id: 15, name: "栄養科"},
     { id: 16, name: "薬局"},
-    { id: 17, name: "その他"}
+    { id: 17, name: "管理者"},
+    { id: 18, name: "その他"}
   ]
 
   include ActiveHash::Associations
