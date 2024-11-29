@@ -1,7 +1,7 @@
-<%= render "staff_header" %>
+<%= render "/staff_members/staff_header" %>
 
-<div>患者一覧</div>
-  <% if @patients.any? %>
+<div>患者一覧patient index</div>
+  <% if @patients.present? %>
 <table>
   <thead>
     <tr>
