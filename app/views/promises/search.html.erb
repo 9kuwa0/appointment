@@ -1,0 +1,17 @@
+<%= render "/families/family_header" %>
+
+<div>患者検索</div>
+
+<%= form_with url: new_promise_path, method: :get, local: true do |f| %>
+  <div>
+    <%= f.label :patient_last_name_kana, "セイ" %>
+    <%= f.text_field :patient_last_name_kana %>
+  </div>
+  <div>
+    <%= f.label :patient_first_name_kana, "メイ" %>
+    <%= f.text_field :patient_first_name_kana %>
+  </div>
+  <%= f.submit "検索", class: "btn btn-primary" %>
+<% end %>
+
+<%= render "/shared/footer" %>
