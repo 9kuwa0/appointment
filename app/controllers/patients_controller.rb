@@ -1,6 +1,9 @@
 class PatientsController < ApplicationController
 
-  # before_action :set_patient, only: [:show, :edit, :update, :destroy]
+  before_action :set_patient, only: [:show, :edit, :update, :destroy]
+  def index
+    @patients = Patient.order(:room)
+  end
 
   def new
     @patient = Patient.new
@@ -9,7 +12,7 @@ class PatientsController < ApplicationController
   def create
     @patient = Patient.new(patient_params)
     if @patient.save
-      redirect_to staff_member_index_path, notice: "登録しました"
+      redirect_to patients_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -31,8 +34,24 @@ class PatientsController < ApplicationController
 
   def destroy
     @patient.destroy
-    redirect_to staff_member_index_path
+    redirect_to patients_path
   end
+
+  def search
+    @patients = []
+    sei = params[:patient_last_name_kana]
+    mei = params[:patient_first_name_kana]
+    if sei.present? && mei.present?
+      @patients = Patient.where(sei: sei, mei: mei)
+      if @patients.exists?
+        redirect_to new_promise_path
+      else
+        flash[:alert] = '該当者が見つかりません'
+        render :search, status: :unprocessable_entity
+      end
+    end
+  end
+
 
   private
 

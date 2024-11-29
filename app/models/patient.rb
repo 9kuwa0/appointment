@@ -1,4 +1,4 @@
-  class Patient < ApplicationRecord
+class Patient < ApplicationRecord
 
   belongs_to :staff_member, optional: true
   has_many :promises
@@ -23,4 +23,5 @@
     validates :patient_last_name_kana
     validates :patient_first_name_kana
   end
+
 end
