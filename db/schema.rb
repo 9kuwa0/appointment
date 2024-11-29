@@ -45,6 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_27_105555) do
     t.bigint "patient_id", null: false
     t.date "day", null: false
     t.integer "meeting_time_id", null: false
+    t.datetime "start_time", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["family_id"], name: "index_promises_on_family_id"

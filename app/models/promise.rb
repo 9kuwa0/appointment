@@ -13,4 +13,19 @@ class Promise < ApplicationRecord
     validates :day
     validates :meeting_time_id, numericality: { other_than: 1 }
   end
+
+  def self.status_for(day, time_string)
+    meeting_time = MeetingTime.find_by(name: time_string)
+    return "◯" unless meeting_time
+    count = where(day: day, meeting_time_id: meeting_time.id).count
+
+    case count
+    when 0
+      "○"
+    when 1
+      "△"
+    else
+      "×"
+    end
+  end
 end

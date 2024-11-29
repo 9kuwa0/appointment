@@ -6,6 +6,8 @@ class PromisesController < ApplicationController
   end
 
   def new
+    @promises = Promise.all.where("day >= ?", Date.current).where("day < ?", Date.current >> 1).order(day: :desc)
+    @times = MeetingTime.all
     @patient = Patient.find_by(patient_last_name_kana: params[:patient_last_name_kana], patient_first_name_kana: params[:patient_first_name_kana])
     if @patient
       @promise = current_family.promises.new(patient: @patient)
