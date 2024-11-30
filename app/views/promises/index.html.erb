@@ -5,16 +5,16 @@
 <div>面会予約一覧</div>
 
 <% if @promises.present?%>
-
-  <% @promises.each do |promise| %>
-    <ul>
+  <ul>
+    <% @promises.each do |promise| %>
       <li>
-      <strong>患者:</strong> <%= "#{promise.patient.patient_last_name_kana} #{promise.patient.patient_first_name_kana}" %> |
+      <strong>患者:</strong> <%= "#{promise.patient.patient_last_name_kana} #{promise.patient.patient_first_name_kana}" %>
       <strong>面会日:</strong> <%= promise.day %> |
       <strong>時間:</strong> <%= promise.meeting_time.name %>
+      <%= link_to "詳細ページへ", promise_path(promise) %>
       </li>
-    </ul>
-  <% end %>
+    <% end %>
+  </ul>
 <% end %>
 
 <%= link_to "面会予約へ", search_promises_path %>

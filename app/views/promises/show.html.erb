@@ -1,0 +1,7 @@
+<%= render "/families/family_header" %>
+
+<%= "#{@promise.patient.patient_last_name_kana} #{@promise.patient.patient_first_name_kana}" %>
+<%= @promise.day %>
+<%= @promise.meeting_time.name %>
+
+<%= render "shared/footer" %>
