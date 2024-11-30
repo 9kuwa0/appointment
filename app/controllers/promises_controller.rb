@@ -1,8 +1,7 @@
 class PromisesController < ApplicationController
   
   def index
-    @patients = Patient.all
-
+    @promises = current_family.promises.includes(:patient)
   end
 
   def new
@@ -18,11 +17,15 @@ class PromisesController < ApplicationController
   end
 
   def create
-    @promise = current_family.promise.new(promise_params)
+    @patient = Patient.find(params[:promise][:patient_id])
+    @promise = current_family.promises.new(promise_params)
     if @promise.save
-      redirect_to family_index_path
+      redirect_to promises_path
+ 
     else
+      logger.debug "保存失敗：#{@promise.errors.full_messages}"
       render :new, status: :unprocessable_entity
+  
     end
   end
 
@@ -33,7 +36,6 @@ class PromisesController < ApplicationController
   private
 
   def promise_params
-    # params.require(:promise).permit(:day, :time).merge(family_id: current_family.id, patient_id: @patient.id)
-    params.require(:promise).permit(:day, :meeting_time, :family_id, :patient_id) 
+    params.require(:promise).permit(:day, :meeting_time_id, :patient_id) 
   end
 end
