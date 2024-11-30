@@ -10,7 +10,8 @@ class StaffDepartment < ActiveHash::Base
     { id: 7, name: "リハビリテーション科"},
     { id: 8, name: "栄養科"},
     { id: 9, name: "薬局"},
-    { id: 10, name: "その他"}
+    { id: 10, name: "管理者"},
+    { id: 11, name: "その他"}
   ]
 
   include ActiveHash::Associations

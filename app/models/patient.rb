@@ -1,7 +1,8 @@
 class Patient < ApplicationRecord
 
   belongs_to :staff_member, optional: true
-  # has_many families, through: :family_patients
+  has_many :promises, dependent: :destroy
+  has_many :families, through: :promises
 
   with_options presence: true do
     validates :patient_number, uniqueness: true
@@ -22,4 +23,5 @@ class Patient < ApplicationRecord
     validates :patient_last_name_kana
     validates :patient_first_name_kana
   end
+
 end

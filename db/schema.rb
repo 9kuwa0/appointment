@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_11_23_114745) do
+ActiveRecord::Schema[7.0].define(version: 2024_11_27_105555) do
   create_table "families", charset: "utf8mb3", force: :cascade do |t|
     t.string "family_last_name", null: false
     t.string "family_first_name", null: false
@@ -40,6 +40,18 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_23_114745) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "promises", charset: "utf8mb3", force: :cascade do |t|
+    t.bigint "family_id", null: false
+    t.bigint "patient_id", null: false
+    t.date "day", null: false
+    t.integer "meeting_time_id", null: false
+    t.datetime "start_time", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["family_id"], name: "index_promises_on_family_id"
+    t.index ["patient_id"], name: "index_promises_on_patient_id"
+  end
+
   create_table "staff_members", charset: "utf8mb3", force: :cascade do |t|
     t.integer "staff_number", null: false
     t.string "staff_last_name", null: false
@@ -58,4 +70,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_11_23_114745) do
     t.index ["staff_number"], name: "index_staff_members_on_staff_number", unique: true
   end
 
+  add_foreign_key "promises", "families"
+  add_foreign_key "promises", "patients"
 end

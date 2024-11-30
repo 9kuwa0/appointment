@@ -1,0 +1,51 @@
+<div class="simple-calendar">
+  <div class="calendar-heading">
+    <span class="calendar-title">
+      <%= t('simple_calendar.week', default: 'Week') %>
+      <%= calendar.week_number %>
+      <% if calendar.number_of_weeks > 1 %>
+        - <%= calendar.end_week %>
+      <% end %>
+    </span>
+
+    <nav>
+      <%= link_to t('simple_calendar.previous', default: '前週'), calendar.url_for_previous_view %>
+      <%= link_to t('simple_calendar.today', default: '今日へ'), calendar.url_for_today_view %>
+      <%= link_to t('simple_calendar.next', default: '次週'), calendar.url_for_next_view %>
+    </nav>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <!-- 日付の行 -->
+      <tr>
+        <th></th> <!-- 時間列のヘッダー -->
+        <% date_range.slice(0, 7).each do |day| %>
+          <th><%= day.strftime("%-m/%-d") %></th> <!-- "11/29"の形式で日付を表示 -->
+        <% end %>
+      </tr>
+
+      <!-- 曜日の行 -->
+      <tr>
+        <th>時間</th>
+        <% date_range.slice(0, 7).each do |day| %>
+          <th><%= I18n.t('date.abbr_day_names')[day.wday] %></th> <!-- 日本語の曜日を表示 -->
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% date_range.each_slice(7) do |week| %>
+        <% times.each do |time| %>
+          <tr>
+            <td><%= time %></td>
+            <% week.each do |day| %>
+              <td>
+                <%= Promise.status_for(day, time) %> <!-- 状態を表示 -->
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

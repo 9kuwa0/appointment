@@ -3,10 +3,8 @@
 <div class="main">
   <div class="staff-form">
     <div class="page-heading">職員新規登録ページ</div>
-
-    <%# <% if カレントユーザーサインインを記入%>
     
-    <%= form_with model: @staff_member, url: new_staff_member_registration_path, local: true do |f| %>
+    <%= form_with model: @staff_member, url: staff_member_registration_path, local: true do |f| %>
 
       <%= render "shared/error_message", model: f.object %>
 
