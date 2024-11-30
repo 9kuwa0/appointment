@@ -1,7 +1,8 @@
 class PromisesController < ApplicationController
+  before_action :set_promise, only:[:show, :edit, :update]
   
   def index
-    @promises = current_family.promises.includes(:patient)
+    @promises = current_family.promises.includes(:patient).where("day >= ?", Date.today).order("day ASC")
   end
 
   def new
@@ -12,7 +13,7 @@ class PromisesController < ApplicationController
       @promise = current_family.promises.new(patient: @patient)
     else
       flash[:alert] = "該当する患者が見つかりません"
-      redirect_to search_promises_path
+      render_to search_promises_path
     end
   end
 
@@ -22,13 +23,23 @@ class PromisesController < ApplicationController
     if @promise.save
       redirect_to promises_path
     else
-      logger.debug "保存失敗：#{@promise.errors.full_messages}"
       render :new, status: :unprocessable_entity
     end
   end
 
   def show
-    @promise = Promise.find(params[:id])
+  end
+
+  def edit
+
+  end
+
+  def update
+    if @promise.update(promise_params)
+      redirect_to promise_path(@promise.id)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def search
@@ -39,5 +50,9 @@ class PromisesController < ApplicationController
 
   def promise_params
     params.require(:promise).permit(:day, :meeting_time_id, :patient_id) 
+  end
+
+  def set_promise
+    @promise = Promise.find(params[:id])
   end
 end
