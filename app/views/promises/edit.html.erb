@@ -1,0 +1,20 @@
+<%= render "/families/family_header" %>
+
+
+<%= "#{@promise.patient.patient_last_name_kana} #{@promise.patient.patient_first_name_kana}" %>
+<%= @promise.day %>
+<%= @promise.meeting_time.name %>
+
+<%= form_with model: @promise, local: true do |f| %>
+  <div>
+    <label class="promise-form-field">面会日</label>
+    <%= f.date_field :day %>
+  </div>
+  <div class="promise-form-field">
+    <label class="form-name">面会時間</label>
+    <%= f.collection_select(:meeting_time_id, MeetingTime.all, :id, :name, {}, { class:"input-field" }) %>
+  </div>
+  <%= f.submit "編集する", class: "btn btn-primary" %>
+<% end %>
+
+<%= render "/shared/footer" %>
