@@ -21,12 +21,14 @@ class PromisesController < ApplicationController
     @promise = current_family.promises.new(promise_params)
     if @promise.save
       redirect_to promises_path
- 
     else
       logger.debug "保存失敗：#{@promise.errors.full_messages}"
       render :new, status: :unprocessable_entity
-  
     end
+  end
+
+  def show
+    @promise = Promise.find(params[:id])
   end
 
   def search
