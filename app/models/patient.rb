@@ -1,7 +1,7 @@
 class Patient < ApplicationRecord
 
   belongs_to :staff_member, optional: true
-  has_many :promises
+  has_many :promises, dependent: :destroy
   has_many :families, through: :promises
 
   with_options presence: true do

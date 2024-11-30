@@ -1,8 +1,7 @@
 class Promise < ApplicationRecord
   belongs_to :family
-  belongs_to :staff_member
-  belongs_to :promise
   belongs_to :patient
+  before_save :set_start_time
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :meeting_time, class_name: "MeetingTime", foreign_key: "meeting_time_id"
@@ -28,4 +27,14 @@ class Promise < ApplicationRecord
       "×"
     end
   end
+  # 家族でログイン中ならまるばつ、職員なら患者名と家族名
+
+  private
+
+  def set_start_time
+    if day.present? && meeting_time.present?
+      self.start_time = day.to_datetime.change(hour: meeting_time.hour, min: meeting_time.minute)
+    end
+  end
+
 end
