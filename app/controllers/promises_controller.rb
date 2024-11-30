@@ -1,5 +1,5 @@
 class PromisesController < ApplicationController
-  before_action :set_promise, only:[:show, :edit, :update]
+  before_action :set_promise, only:[:show, :edit, :update, :destroy]
   
   def index
     @promises = current_family.promises.includes(:patient).where("day >= ?", Date.today).order("day ASC")
@@ -31,7 +31,6 @@ class PromisesController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
@@ -40,6 +39,11 @@ class PromisesController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
+  end
+  
+  def destroy
+    @promise.destroy
+    redirect_to promises_path
   end
 
   def search

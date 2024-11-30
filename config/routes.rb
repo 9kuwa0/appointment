@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   resources :patients
-  resources :promises, only: [:index, :new, :create, :show, :edit, :update] do
+  resources :promises do
     collection do
       get 'search', to: 'promises#search'
     end

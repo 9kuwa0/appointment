@@ -4,6 +4,7 @@
 <%= @promise.day %>
 <%= @promise.meeting_time.name %>
 
-<%= link_to "編集", edit_promise_path %>
+<%= link_to "予約を編集する", edit_promise_path %>
+<%= link_to "予約を削除する", promise_path(@promise.id), data: {turbo_method: :delete} %>
 
 <%= render "shared/footer" %>
