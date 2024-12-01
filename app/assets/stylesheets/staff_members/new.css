@@ -1,0 +1,48 @@
+.registration-main{
+  width: 100vw;
+  box-sizing: border-box;
+}
+
+.main{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 50px;
+}
+
+.page-heading{
+  width: 500px;
+  font-size: 28px;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.staff-form-field{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+}
+
+.staff-form-field .input-field{
+  align-self: flex-start;
+}
+
+.staff-form-field:last-child{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-field{
+  width: 100%;
+  height: 35px;
+}
+
+.register-btn {
+  width: 33%;
+  height: 35px;
+  text-align: center;
+  margin-top: 20px;
+}

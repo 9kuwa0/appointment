@@ -1,11 +1,10 @@
 <%= render "shared/header" %>
 
-<div class="main">
-  <div class="staff-form">
-    <div class="page-heading">職員新規登録ページ</div>
+<%= form_with model: @staff_member, url: staff_member_registration_path, class: "registration-main", local: true do |f| %>
+  <div class="main">
+    <div class="staff-form">
+      <div class="page-heading">職員新規登録ページ</div>
     
-    <%= form_with model: @staff_member, url: staff_member_registration_path, local: true do |f| %>
-
       <%= render "shared/error_message", model: f.object %>
 
       <div class="staff-form-field">
@@ -30,7 +29,7 @@
       </div>
       <div class="staff-form-field">
         <label class="form-name">メールアドレス</label>
-        <%= f.email_field :email, class:"input-field", id:"staff_email" %>
+        <%= f.email_field :email, class:"input-field", id:"staff_email", placeholder:"email" %>
       </div>
       <div class="staff-form-field">
         <label class="form-name">パスワード</label>
@@ -40,9 +39,11 @@
         <label class="form-name">確認用パスワード</label>
         <%= f.password_field :password_confirmation, class:"input-field", id:"password_confirmation", placeholder:"同じパスワードを入力してください" %>
       </div>
-      <div class="staff-form">
+      <div class="staff-form-field">
         <%= f.submit "新規登録", class:"register-btn" %>
       </div>
+    </div>
+  </div>
+<% end %>
 
-    <% end %>
 <%= render "shared/footer" %>
