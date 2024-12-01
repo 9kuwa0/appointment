@@ -1,8 +1,6 @@
 <div class="simple-calendar">
   <div class="calendar-heading">
     <span class="calendar-title">
-      <%= t('simple_calendar.week', default: 'Week') %>
-      <%= calendar.week_number %>
       <% if calendar.number_of_weeks > 1 %>
         - <%= calendar.end_week %>
       <% end %>
@@ -39,7 +37,6 @@
             <% week.each do |day| %>
               <td>
                 <%= Promise.status_for(day, time) %>
-                <%= display_status(day, time) %>
               </td>
             <% end %>
           </tr>
