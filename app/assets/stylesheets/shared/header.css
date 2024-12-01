@@ -5,9 +5,14 @@
 
 .header{
   width: 100vw;
+  background-color: azure;
 }
 
 .header-main{
   font-size: 34px;
   padding: 10px;
+}
+
+.navi-bar{
+  padding-left: 30px;
 }
