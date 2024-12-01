@@ -1,0 +1,13 @@
+* {
+  box-sizing: border-box;
+}
+
+
+.header{
+  width: 100vw;
+}
+
+.header-main{
+  font-size: 34px;
+  padding: 10px;
+}
