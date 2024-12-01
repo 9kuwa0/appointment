@@ -1,50 +1,47 @@
 <%= render "/staff_members/staff_header" %>
 <div class="patient-main">
-  <div class="patients">
-    患者情報修正
-  </div>
-  <div class="patient-form">
+  <h1 class="patients-title">患者情報修正</h1>
+  <div class="patient-form-container">
     <%= form_with model: @patient, local: true do |f| %>
     
     <%= render "shared/error_message", model: f.object %>
 
     <div class="patient-form-field">
-      <label class="form-name">患者ID</label>
-      <%= f.text_field :patient_number, class:"input_field", id:"patient_number", placeholder:"患者ID" %>
+      <label for="patient_number" class="form-name">患者ID</label>
+      <%= f.text_field :patient_number, class: "input-field", id: "patient_number", placeholder: "患者ID" %>
     </div>
     <div class="patient-form-field">
-      <label class="form-name">姓</label>
-      <%= f.text_field :patient_last_name, class:"input_field", id:"patient_last_name" %>
+      <label for="patient_last_name" class="form-name">姓</label>
+      <%= f.text_field :patient_last_name, class: "input-field", id: "patient_last_name" %>
     </div>
     <div class="patient-form-field">
-      <label class="form-name">名</label>
-      <%= f.text_field :patient_first_name, class:"input_field", id:"patient_first_name" %>
+      <label for="patient_first_name" class="form-name">名</label>
+      <%= f.text_field :patient_first_name, class: "input-field", id: "patient_first_name" %>
     </div>
     <div class="patient-form-field">
-      <label class="form-name">セイ</label>
-      <%= f.text_field :patient_last_name_kana, class:"input_field", id:"patient_last_name_kana", placeholder:"全角カタカナ" %>
+      <label for="patient_last_name_kana" class="form-name">セイ</label>
+      <%= f.text_field :patient_last_name_kana, class: "input-field", id: "patient_last_name_kana", placeholder: "全角カタカナ" %>
     </div>
     <div class="patient-form-field">
-      <label class="form-name">メイ</label>
-      <%= f.text_field :patient_first_name_kana, class:"input_field", id:"patient_first_name_kana", placeholder:"全角カタカナ" %>
+      <label for="patient_first_name_kana" class="form-name">メイ</label>
+      <%= f.text_field :patient_first_name_kana, class: "input-field", id: "patient_first_name_kana", placeholder: "全角カタカナ" %>
     </div>
     <div class="patient-form-field">
-      <label class="form-name">誕生日</label>
-      <%= f.date_select :birthday, start_year: 1900, end_year: Date.today.year, default: Date.today %>
+      <label for="birthday" class="form-name">誕生日</label>
+      <%= f.date_select :birthday, start_year: 1900, end_year: Date.today.year, default: Date.today, class: "date-select" %>
     </div>
     <div class="patient-form-field">
-      <label class="form-name">病棟</label>
-      <%= f.text_field :floor, class:"floor", id:"floor", placeholder:"半角数字のみ" %>階
+      <label for="floor" class="form-name">病棟</label>
+      <%= f.text_field :floor, class: "input-field", id: "floor", placeholder: "半角数字のみ" %>階
     </div>
     <div class="patient-form-field">
-      <label class="form-name">病室</label>
-      <%= f.text_field :room, class:"room", id:"room", placeholder:"半角数字のみ" %>号室
+      <label for="room" class="form-name">病室</label>
+      <%= f.text_field :room, class: "input-field", id: "room", placeholder: "半角数字のみ" %>号室
     </div>
-    <div class="patient-form-field">
-      <%= f.submit "登録する", class:"patient-btn" %>
+    <div class="form-actions">
+      <%= f.submit "登録する", class: "patient-btn" %>
     </div>
   <% end %>
   </div>
-
 </div>
 <%= render "/shared/footer" %>
