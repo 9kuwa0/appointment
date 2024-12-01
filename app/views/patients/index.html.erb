@@ -1,8 +1,12 @@
 <%= render "/staff_members/staff_header" %>
 
-<div>患者一覧patient index</div>
-  <% if @patients.present? %>
-    <table>
+<div class="patients-index-header">
+  <h1>入院患者一覧</h1>
+</div>
+
+<% if @patients.present? %>
+  <div class="patients-table-container">
+    <table class="patients-table">
       <thead>
         <tr>
           <th>階</th>
@@ -21,30 +25,33 @@
             <td><%= patient.room %></td>
             <td><%= patient.patient_number %></td>
             <td><%= "#{patient.patient_last_name} #{patient.patient_first_name}" %></td>
-            <td><%= "#{patient.patient_last_name_kana} #{patient.patient_first_name_kana}" %>
+            <td><%= "#{patient.patient_last_name_kana} #{patient.patient_first_name_kana}" %></td>
             <td><%= patient.birthday %></td>
-            <td><%= link_to "詳細・編集ページへ", patient_path(patient) %>
+            <td><%= link_to "詳細・編集ページへ", patient_path(patient), class: "details-link" %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
+  </div>
 
-    <div class="calendar">
-      <%= week_calendar events: @promises do |date| %>
-        <% times.each do |time| %> <!-- 時間ごとに行を生成 -->
-          <tr>
-            <td><%= time.name %></td> <!-- 時間を左列に表示 -->
-
-            <% 7.times do |i| %> <!-- 1週間分の列を生成 -->
-              <% current_date = date.beginning_of_week + i.days %>
-              <td>
-                <%= Promise.status_for(current_date, time) %> <!-- 状態を表示 -->
-              </td>
-            <% end %>
-          </tr>
-        <% end %>
+  <div class="calendar">
+    <%= week_calendar events: @promises do |date| %>
+      <% times.each do |time| %>
+        <tr>
+          <td class="time-column"><%= time.name %></td>
+          <% 7.times do |i| %>
+            <% current_date = date.beginning_of_week + i.days %>
+            <td class="status-column">
+              <%= Promise.status_for(current_date, time) %>
+            </td>
+          <% end %>
+        </tr>
       <% end %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+
+<% else %>
+  <div class="no-patients-message">現在、患者が登録されていません。</div>
+<% end %>
 
 <%= render "/shared/footer" %>

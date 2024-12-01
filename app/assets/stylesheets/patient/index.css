@@ -1,0 +1,110 @@
+/* 全体のレイアウト */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.patients-index-header{
+  text-align: center;
+}
+
+.patients-table-container{
+  display: flex;
+  justify-content: center;
+}
+
+table {
+  width: 80%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+
+
+/* ボタン・リンクのスタイル */
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* カレンダーのスタイル */
+.calendar {
+  margin: 20px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.calendar table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.calendar th, .calendar td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+.calendar th {
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+}
+
+.calendar td {
+  background-color: #f9f9f9;
+}
+
+.calendar td:hover {
+  background-color: #e9ecef;
+  cursor: pointer;
+}
+
+/* 時間行のスタイル */
+.calendar tr td:first-child {
+  font-weight: bold;
+  background-color: #f4f4f4;
+}
+
+/* ヘッダーとフッター */
+header, footer {
+  background-color: #007bff;
+  text-align: center;
+  padding: 10px 0;
+}
+
+footer {
+  margin-top: 20px;
+}
