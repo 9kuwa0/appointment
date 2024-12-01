@@ -1,0 +1,12 @@
+* {
+  box-sizing: border-box;
+}
+
+.footer{
+  width: 100vw;
+}
+
+.footer-main{
+  display: flex;
+  justify-content: center;
+}
