@@ -27,7 +27,6 @@ class Promise < ApplicationRecord
       "×"
     end
   end
-  # 家族でログイン中ならまるばつ、職員なら患者名と家族名
 
   private
 
