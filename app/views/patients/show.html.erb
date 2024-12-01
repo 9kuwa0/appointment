@@ -1,21 +1,22 @@
 <%= render "/staff_members/staff_header" %>
 
 <div class="patient-show-main">
-  <div class="patient-field">
-    <%= @patient.floor %>階
-    <%= @patient.room %>号室
-    ID：<%= @patient.patient_number %>
-    名前<%= "#{@patient.patient_last_name} #{@patient.patient_first_name}" %>
-    フリガナ<%= "#{@patient.patient_last_name_kana} #{@patient.patient_first_name_kana}" %>
-    生年月日<%= @patient.birthday %>
+  <h1 class="patient-title">患者情報</h1>
+  
+  <div class="patient-info">
+    <p class="patient-field">
+      <strong>病棟:</strong> <%= @patient.floor %>階<br>
+      <strong>病室:</strong> <%= @patient.room %>号室<br>
+      <strong>ID:</strong> <%= @patient.patient_number %><br>
+      <strong>名前:</strong> <%= "#{@patient.patient_last_name} #{@patient.patient_first_name}" %><br>
+      <strong>フリガナ:</strong> <%= "#{@patient.patient_last_name_kana} #{@patient.patient_first_name_kana}" %><br>
+      <strong>生年月日:</strong> <%= @patient.birthday %>
+    </p>
   </div>
-  <div class="patient-btn">
-    <div class="patient-edit-btn">
-      <%= link_to "編集する", edit_patient_path(@patient) %>
-    </div>
-    <div class="patient-delete-btn" >
-      <%= link_to "削除する", patient_path(@patient.id), data: {turbo_method: :delete} %>
-    </div>
+
+  <div class="patient-actions">
+    <%= link_to "編集する", edit_patient_path(@patient), class: "action-btn edit-btn" %>
+    <%= link_to "削除する", patient_path(@patient.id), data: { turbo_method: :delete }, class: "action-btn delete-btn" %>
   </div>
 </div>
 
