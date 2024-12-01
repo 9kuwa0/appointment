@@ -7,7 +7,7 @@ module ApplicationHelper
       if promises.exists?
         promises.map do |f|
            "#{f.patient.patient_last_name} #{f.patient.patient_first_name} - #{f.family.family_last_name} #{f.family.family_first_name}"
-        end.join(", ")
+        end.join("\n")
       else
         "空き"
       end

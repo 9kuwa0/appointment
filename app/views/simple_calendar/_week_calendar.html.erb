@@ -36,7 +36,7 @@
             <td><%= time %></td>
             <% week.each do |day| %>
               <td>
-                <%= Promise.status_for(day, time) %>
+                <%= display_status(day, time) %>
               </td>
             <% end %>
           </tr>
