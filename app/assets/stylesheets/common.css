@@ -1,0 +1,60 @@
+* {
+  list-style: none;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+/* 全ヘッダー */
+.header {
+  width: 100vw;
+  background-color: azure;
+  font-size: 40px;
+}
+
+.header-logo {
+  display: flex;
+  justify-content: center;
+}
+
+.header-main {
+  font-size: 40px;
+  padding-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.header-sub {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-info {
+  font-size: 20px;
+  margin-left: 20px;
+}
+
+.header-lists {
+  display: flex;
+}
+
+.header-list {
+  margin-left: 20px;
+}
+
+/* フッター */
+
+.footer{
+  width: 100vw;
+}
+
+.footer-main{
+  font-size: 25px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aliceblue
+}

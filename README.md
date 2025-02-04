@@ -8,9 +8,7 @@
   作製前
 
 # テスト用アカウント
-  Basic認証ID : admin1  
-  Basic認証パスワード : 19900509  
-  メールアドレス : 作成前  
+  メールアドレス : 作成前
   パスワード : 作成前  
 
 # 利用方法
@@ -41,6 +39,7 @@ https://docs.google.com/spreadsheets/d/1jGwedmSThwS4Qy18OXHkuSJDIkHuTig8F3z3t-nI
 | staff_first_name     | string   | null: false               |
 | staff_department_id  | integer  | null: false               |
 | staff_affiliation_id | integer  | null: false               |
+| email                | string   | null: false, unique: true |
 | password             | string   | null: false               |
 ### Association
 - has_many :patients
@@ -58,7 +57,7 @@ https://docs.google.com/spreadsheets/d/1jGwedmSThwS4Qy18OXHkuSJDIkHuTig8F3z3t-nI
 | room                    | integer |                           |
 ### Association
 - belongs_to :staff_member
-- has_many :families, through: :family_patients
+- has_many :families, through: :promises
 
 ### families
 | Column                 | Type   | Options                   |
@@ -70,35 +69,27 @@ https://docs.google.com/spreadsheets/d/1jGwedmSThwS4Qy18OXHkuSJDIkHuTig8F3z3t-nI
 | email                  | string | null: false, unique: true |
 | password               | string | null: false               |
 ### Association
-- has_many :patients, through: :family_patients
-
-### family_patients
-| Column     | Type       | Options                        |
-|------------|------------|--------------------------------|
-| family_id  | references | null: false, foreign_key: true |
-| patient_id | references | null: false, foreign_key: true |
-#### Association
-- has_one :promises
-- belongs_to :family
-- belongs_to :patient
+- has_many :patients
+- has_many :patients, through: :promises
 
 ### promises
-| Column  | Type     | Options     |
-|---------|----------|-------------|
-| day     | date     | null: false |
-| time    | integer  | null: false |
-### Association
-- belongs_to :family_patients
+| Column          | Type       | Options                        |
+|-----------------|------------|--------------------------------|
+| family_id       | references | null: false, foreign_key: true |
+| patient_id      | references | null: false, foreign_key: true |
+| day             | date       | null: false                    |
+| meeting_time_id | integer    | null: false                    |
+#### Association
+- belongs_to :family
+- belongs_to :patient
 
 # 画面遷移図
 [![Image from Gyazo](https://i.gyazo.com/24b212d81692949f7f69a954d41b8739.png)](https://gyazo.com/24b212d81692949f7f69a954d41b8739)
 
 # 実装予定の機能
-- formオブジェクト
 - 中間テーブル
 - アクティブハッシュ
 - deviceモデルを2つ作成する
-
 
 # 開発環境
 - Ruby on Rails

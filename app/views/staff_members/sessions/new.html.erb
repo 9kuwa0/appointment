@@ -1,22 +1,28 @@
 <%= render "shared/header" %>
 
 <div class="main">
-  <div class="staff-form">
-    <div class="page-heading">職員ログイン</div>
-    
-    <%= form_with model: resource, url: staff_member_session_path, local: true, data: { turbo: false } do |f| %>
+  <div class="contents">
+    <h1 class="title">職員ログイン</h1>
 
-      <div class="staff-form-field">
-        <label class="form-name">メールアドレス</label>
-        <%= f.email_field :email, class:"input-field", id:"email", placeholder:"email" %>
-      </div>
-      <div class="staff-form-field">
-        <label class="form-name">パスワード</label>
-        <%= f.password_field :password, class:"input-field", id:"staff_password", placeholder:"6文字以上の半角英数" %>
-      </div>
-      <div class="staff-form">
-        <%= f.submit "ログイン", class:"register-btn" %>
-      </div>
+    <div class="content">
+      <%= form_with model: resource, url: staff_member_session_path, class: "registration-main", local: true, data: { turbo: false } do |f| %>
 
-    <% end %>
+      <%= render "shared/error_message", model: f.object %>
+
+        <div class="form-field">
+          <label class="form-name">メールアドレス</label>
+          <%= f.email_field :email, class:"input-field", placeholder:"email" %>
+        </div>
+        <div class="form-field">
+          <label class="form-name">パスワード</label>
+          <%= f.password_field :password, class:"input-field", placeholder:"6文字以上の半角英数" %>
+        </div>
+        <div class="form-actions">
+          <%= f.submit "ログイン", class:"register-btn" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 <%= render "shared/footer" %>

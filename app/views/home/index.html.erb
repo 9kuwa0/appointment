@@ -1,12 +1,14 @@
 <%= render "shared/header" %>
 
 <div class="main">
-  <ul class="lists">
-    <li><%= link_to '職員新規登録', new_staff_member_registration_path, class: "staff-btn" %></li>
-    <li><%= link_to '職員ログイン', new_staff_member_session_path, class: "staff-btn" %></li>
-    <li><%= link_to '患者様ご家族新規登録', new_family_registration_path, class: "family-btn" %></li>
-    <li><%= link_to '患者様ご家族ログイン', new_family_session_path, class: "family-btn" %>  </li>
-  </ul>
+  <div class="contents">
+    <div class="home-content">
+      <div><%= link_to '職員新規登録', new_staff_member_registration_path, class: "home-list" %></div>
+      <div><%= link_to '職員ログイン', new_staff_member_session_path, class: "home-list" %></div>
+      <div><%= link_to '患者様ご家族新規登録', new_family_registration_path, class: "home-list" %></div>
+      <div><%= link_to '患者様ご家族ログイン', new_family_session_path, class: "home-list" %> </div>
+    </div>
+  </div>
 </div>
 
 <%= render "shared/footer" %>

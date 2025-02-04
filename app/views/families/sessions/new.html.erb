@@ -1,27 +1,27 @@
 <%= render "shared/header" %>
 
-<div class="family-main">
-  <div class="families">
-    患者様ご家族新規登録
-  </div>
-  <div class="family-form">
-    <%= form_with model: @family, url: new_family_session_path, class: 'registration-main', local: true do |f| %>
+<div class="main">
+  <div class="contents">
+    <h1 class="title">患者様ご家族ログイン</h1>
 
-    <div class="family-form-field">
-      <label class="form-name">メールアドレス</label>
-      <%= f.email_field :email, class:"input_field" %>
+    <div class="content">
+      <%= form_with model: @family, url: new_family_session_path, class: 'registration-main', local: true do |f| %>
+
+      <%= render "shared/error_message", model: f.object %>
+
+        <div class="form-field">
+          <label class="form-name">メールアドレス</label>
+          <%= f.email_field :email, class:"input-field", placeholder:"email" %>
+        </div>
+        <div class="form-field">
+          <label class="form-name">パスワード</label>
+          <%= f.password_field :password, class:"input-field", placeholder:"6文字以上の半角英数" %>
+        </div>
+        <div class="form-actions">
+          <%= f.submit "ログイン", class:"register-btn" %>
+        </div>
+      <% end %>
     </div>
-
-    <div class="family-form-field">
-      <label class="form-name">パスワード</label>
-      <%= f.password_field :password, class:"input_field" %>
-    </div>
-
-    <div class="family-form-field">
-      <%= f.submit "ログイン", class:"register-btn" %>
-    </div>
-
-    <% end %>
   </div>
 </div>
 

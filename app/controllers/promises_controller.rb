@@ -2,7 +2,7 @@ class PromisesController < ApplicationController
   before_action :set_promise, only:[:show, :edit, :update, :destroy]
   
   def index
-    @promises = current_family.promises.includes(:patient).where("day >= ?", Date.today).order("day ASC")
+    @promises = current_family.promises.includes(:patient).where("day >= ?", Date.today).order(day: :ASC, meeting_time_id: :ASC)
   end
 
   def new
@@ -12,8 +12,8 @@ class PromisesController < ApplicationController
     if @patient
       @promise = current_family.promises.new(patient: @patient)
     else
-      flash[:alert] = "該当する患者が見つかりません"
-      render_to search_promises_path
+      flash[:alert] = "そんな人いません！！！"
+      render search_promises_path
     end
   end
 

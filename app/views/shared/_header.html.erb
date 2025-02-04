@@ -1,13 +1,46 @@
-
 <header class="header">
-  <div class="header-main">
-    <%= link_to 'tech hospital', root_path %>
-  </div>
-  <div class="navi-bar-nain">
-    <div class="navi-bar">
+
+        <%# スタッフでログイン中の場合 %>
+  <% if staff_member_signed_in? %>
+    <div class="header-main">
+        スタッフページ
+    </div>
+    <div class="header-sub">
+      <div class="header-info">
+        <%= "#{current_staff_member.staff_department.name} #{current_staff_member.staff_last_name} #{current_staff_member.staff_first_name}" %>
+      </div>
+      <ul class="header-lists">
+        <li class="header-list"><%= link_to '患者一覧ページへ', patients_path %></li>
+        <li class="header-list"><%= link_to '新規患者登録ページへ', new_patient_path %></li>
+        <li class="header-list"><%= link_to 'ログアウト', destroy_staff_member_session_path, data: {turbo_method: :delete} %></li>
+      </ul>
+    </div>
+
+        <%# ファミリーでログイン中の場合 %>
+
+  <% elsif family_signed_in? %>
+    <div class="header-main">
+      ご家族様ページ
+    </div>
+    <div class="header-sub">
+      <div class="header-info">
+        <%= "#{current_family.family_last_name} #{current_family.family_first_name}" %>様
+      </div>
+      <ul class="header-lists">
+        <li class="header-list"><%= link_to '一覧ページ', promises_path %></li>
+        <li class="header-list"><%= link_to '面会予約ページ', search_promises_path %></li>
+        <li class="header-list"><%= link_to 'ログアウト', destroy_family_session_path, data: {turbo_method: :delete} %></li>
+      </ul>
+    </div>
+
+        <%# ログインしていない場合 %>
+  <% else %>     
+    <div class="header-main">
+      <%= link_to 'tech hospital', root_path, class: "root-btn" %>
+    </div>
+    <div class="header-logo">
       ようこそ
     </div>
-  </div>
-  <%# 消す %>
-  # ここまでヘッダー
+  <% end %>
+  
 </header>

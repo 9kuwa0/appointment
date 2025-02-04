@@ -1,17 +1,31 @@
-<%= render "/families/family_header" %>
+<%= render "shared/header" %>
 
-<div>患者検索</div>
+<div class="main">
+  <div class="contents">
+    <h1 class="title">患者検索</h1>
 
-<%= form_with url: new_promise_path, method: :get, local: true do |f| %>
-  <div>
-    <%= f.label :patient_last_name_kana, "セイ" %>
-    <%= f.text_field :patient_last_name_kana %>
+    <div class="content">
+      <%= form_with url: new_promise_path, method: :get, local: true do |f| %>
+
+          <% if flash[:alert] %>
+            <div class="alert alert-danger">
+              <%= flash[:alert] %>
+            </div>
+          <% end %>
+        <div class="form-field">
+          <%= f.label :patient_last_name_kana, "セイ", class:"form-name" %>
+          <%= f.text_field :patient_last_name_kana, class:"input-field", placeholder:"全角カタカナ" %>
+        </div>
+        <div class="form-field">
+          <%= f.label :patient_first_name_kana, "メイ", class:"form-name" %>
+          <%= f.text_field :patient_first_name_kana, class:"input-field", placeholder:"全角カタカナ" %>
+        </div>
+        <div class="form-actions">
+        <%= f.submit "検索", class: "search-btn" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div>
-    <%= f.label :patient_first_name_kana, "メイ" %>
-    <%= f.text_field :patient_first_name_kana %>
-  </div>
-  <%= f.submit "検索", class: "btn btn-primary" %>
-<% end %>
+</div>
 
-<%= render "/shared/footer" %>
+<%= render "shared/footer" %>
