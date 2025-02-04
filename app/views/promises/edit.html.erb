@@ -1,20 +1,39 @@
-<%= render "/families/family_header" %>
+<%= render "shared/header" %>
 
+<div class="main">
+  <div class="contents">
+    <h1 class="title">予約時間変更</h1>
 
-<%= "#{@promise.patient.patient_last_name_kana} #{@promise.patient.patient_first_name_kana}" %>
-<%= @promise.day %>
-<%= @promise.meeting_time.name %>
+    <div class="content">
+        <h3 class="content-title">現在の予約</h3>
+        <div class="form-field">
+          患者名：<%= "#{@promise.patient.patient_last_name_kana} #{@promise.patient.patient_first_name_kana}" %>様
+        </div>
+        <div class="form-field">
+          面会日：<%= @promise.day %>
+        </div>
+        <div class="form-field">
+          面会時間：<%= @promise.meeting_time.name %>
+        </div>
+    </div>
 
-<%= form_with model: @promise, local: true do |f| %>
-  <div>
-    <label class="promise-form-field">面会日</label>
-    <%= f.date_field :day %>
+    <div class="content">
+      <h3 class="content-title">予約変更後</h3>
+              <%= form_with model: @promise, local: true do |f| %>
+                <div class="form-field">
+                  <label class="form-name">面会日</label>
+                  <%= f.date_field :day %>
+                </div>
+                <div class="form-field">
+          <label class="form-name">面会時間</label>
+          <%= f.collection_select(:meeting_time_id, MeetingTime.all, :id, :name, {}, { class:"input-field" }) %>
+        </div>
+        <div class="form-actions">
+          <%= f.submit "変更する", class: "btn" %>
+      </div>
+      <% end %>
+    </div>
   </div>
-  <div class="promise-form-field">
-    <label class="form-name">面会時間</label>
-    <%= f.collection_select(:meeting_time_id, MeetingTime.all, :id, :name, {}, { class:"input-field" }) %>
-  </div>
-  <%= f.submit "編集する", class: "btn btn-primary" %>
-<% end %>
+</div>
 
-<%= render "/shared/footer" %>
+<%= render "shared/footer" %>

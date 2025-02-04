@@ -1,10 +1,26 @@
-<%= render "/families/family_header" %>
+<%= render "shared/header" %>
 
-<%= "#{@promise.patient.patient_last_name_kana} #{@promise.patient.patient_first_name_kana}" %>
-<%= @promise.day %>
-<%= @promise.meeting_time.name %>
+<div class="main">
+  <div class="contents">
+    <h1 class="title">予約詳細ページ</h1>
 
-<%= link_to "予約を編集する", edit_promise_path %>
-<%= link_to "予約を削除する", promise_path(@promise.id), data: {turbo_method: :delete} %>
+    <div class="content">
+      <div class="form-field">
+        患者：<%= "#{@promise.patient.patient_last_name_kana} #{@promise.patient.patient_first_name_kana}" %>
+      </div>
+      <div class="form-field">
+        日にち：<%= @promise.day %>
+      </div>
+      <div class="form-field">
+        <%= @promise.meeting_time.name %>
+      </div>
+
+      <div class="form-actions">
+        <%= link_to "予約を編集する", edit_promise_path, class: "btn" %>
+        <%= link_to "予約を削除する", promise_path(@promise.id), data: {turbo_method: :delete}, class: "btn" %>
+      </div>
+    </div>
+  </div>
+</div>
 
 <%= render "shared/footer" %>
