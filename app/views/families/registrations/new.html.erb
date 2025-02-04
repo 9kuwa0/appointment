@@ -1,55 +1,48 @@
 <%= render "shared/header" %>
 
-<div class="family-main">
-  <div class="families">
-    患者様ご家族新規登録
+  <div class="main">
+    <div class="contents">
+      <h1 class="title">患者様ご家族新規登録</h1>
+
+      <div class="content">
+        <%= form_with model: @family, url: family_registration_path, class: 'registration-main', local: true do |f| %>
+
+        <%= render "shared/error_message", model: f.object %>
+
+          <div class="form-field">
+            <label class="form-name">姓</label>
+            <%= f.text_field :family_last_name, class:"input-field", placeholder:"例: 山田" %>
+          </div>
+          <div class="form-field">
+            <label class="form-name">名</label>
+            <%= f.text_field :family_first_name, class:"input-field", placeholder:"例: 太郎" %>
+          </div>
+          <div class="form-field">
+            <label class="form-name">セイ</label>
+            <%= f.text_field :family_last_name_kana, class:"input-field", placeholder:"例: ヤマダ" %>
+          </div>
+          <div class="form-field">
+            <label class="form-name">メイ</label>
+            <%= f.text_field :family_first_name_kana, class:"input-field", placeholder:"例: タロウ" %>
+          </div>
+          <div class="form-field">
+            <label class="form-name">メールアドレス</label>
+            <%= f.email_field :email, class:"input-field", placeholder:"例: example@example.com" %>
+          </div>
+          <div class="form-field">
+            <label class="form-name">パスワード</label>
+            <%= f.password_field :password, class:"input-field", placeholder:"半角英数字6文字以上" %>
+          </div>
+          <div class="form-field">
+            <label class="form-name">確認用パスワード</label>
+            <%= f.password_field :password_confirmation, class:"input-field", placeholder:"同じパスワードを入力してください" %>
+          </div>
+          <div class="form-actions">
+            <%= f.submit "新規登録", class:"register-btn" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <div class="family-form">
-    <%= form_with model: @family, url: family_registration_path, class: 'registration-main', local: true do |f| %>
-
-    <%= render "shared/error_message", model: f.object %>
-
-    <div class="family-form-field">
-      <label class="form-name">姓</label>
-      <%= f.text_field :family_last_name, class:"input_field" %>
-    </div>
-
-    <div class="family-form-field">
-      <label class="form-name">名</label>
-      <%= f.text_field :family_first_name, class:"input_field" %>
-    </div>
-
-    <div class="family-form-field">
-      <label class="form-name">セイ</label>
-      <%= f.text_field :family_last_name_kana, class:"input_field" %>
-    </div>
-
-    <div class="family-form-field">
-      <label class="form-name">メイ</label>
-      <%= f.text_field :family_first_name_kana, class:"input_field" %>
-    </div>
-
-    <div class="family-form-field">
-      <label class="form-name">メールアドレス</label>
-      <%= f.email_field :email, class:"input_field" %>
-    </div>
-
-    <div class="family-form-field">
-      <label class="form-name">パスワード</label>
-      <%= f.password_field :password, class:"input_field" %>
-    </div>
-
-    <div class="family-form-field">
-      <label class="form-name">確認用パスワード</label>
-      <%= f.password_field :password_confirmation, class:"input_field",placeholder:"同じパスワードを入力してください" %>
-    </div>
-
-    <div class="family-form-field">
-      <%= f.submit "新規登録する", class:"register-btn" %>
-    </div>
-
-    <% end %>
-  </div>
-</div>
 
 <%= render "shared/footer" %>
