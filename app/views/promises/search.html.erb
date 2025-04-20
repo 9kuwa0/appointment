@@ -2,7 +2,7 @@
 
 <div class="main">
   <div class="contents">
-    <h1 class="title">患者検索</h1>
+    <h1 class="title">患者様の名前を入力してくださ</h1>
 
     <div class="content">
       <%= form_with url: new_promise_path, method: :get, local: true do |f| %>
@@ -21,7 +21,7 @@
           <%= f.text_field :patient_first_name_kana, class:"input-field", placeholder:"全角カタカナ" %>
         </div>
         <div class="form-actions">
-        <%= f.submit "検索", class: "search-btn" %>
+        <%= f.submit "検索", class: "btn" %>
         </div>
       <% end %>
     </div>

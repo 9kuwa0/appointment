@@ -3,26 +3,30 @@
 <div class="main">
   <div class="contents">
     <h1 class="title">患者情報</h1>
-  
+
     <div class="content">
-      <div class="form-field">
-        病棟: <%= @patient.floor %>階
-      </div>
-      <div class="form-field">
-        病室: <%= @patient.room %>号室
-      </div>
-      <div class="form-field">
-        ID: <%= @patient.patient_number %>
-      </div>
-      <div class="form-field">
-        名前: <%= "#{@patient.patient_last_name} #{@patient.patient_first_name}" %>
-      </div>
-      <div class="form-field">
-        フリガナ: <%= "#{@patient.patient_last_name_kana} #{@patient.patient_first_name_kana}" %>
-      </div>
-      <div class="form-field">
-        生年月日: <%= @patient.birthday %>
-      </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>階</th>
+              <th>部屋</th>
+              <th>患者ID</th>
+              <th>名前</th>
+              <th>フリガナ</th>
+              <th>生年月日</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @patient.floor %></td>
+              <td><%= @patient.room %></td>
+              <td><%= @patient.patient_number %></td>
+              <td><%= "#{@patient.patient_last_name} #{@patient.patient_first_name}" %></td>
+              <td><%= "#{@patient.patient_last_name_kana} #{@patient.patient_first_name_kana}" %></td>
+              <td><%= @patient.birthday %></td>
+            </tr>
+          </tbody>
+        </table>
 
       <div class="form-actions">
         <%= link_to "編集する", edit_patient_path(@patient), class: "action-btn edit-btn" %>

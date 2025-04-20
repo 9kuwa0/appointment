@@ -10,7 +10,8 @@
         <%= render "shared/error_message", model: f.object %>
 
         <div class="form-field">
-          患者名 <%=  "#{@patient.patient_last_name_kana} #{@patient.patient_first_name_kana}" %>様
+          <label class="form-name">患者名</label>
+            <%= "#{@patient.patient_last_name_kana} #{@patient.patient_first_name_kana}" %>様
         </div>
         <%= form_with model: @promise, url: promises_path, local: true do |f| %>
           <%= f.hidden_field :patient_id, value: @patient.id %>
@@ -30,7 +31,7 @@
       <% end %>
     </div>
 
-    <div class="calendar">
+    <div class="content">
       <%= week_calendar(events: @events) do |calendar| %>
         <%= render 'simple_calendar/week_calendar', calendar: calendar %>
       <% end %>
