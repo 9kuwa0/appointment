@@ -38,18 +38,11 @@
     </div>
 
     <div class="calendar">
-      <%= week_calendar events: @promises do |date| %>
-        <% times.each do |time| %>
-          <tr>
-              <td class="time-column"><%= time %></td>
-            <% 7.times do |i| %>
-              <% current_date = date.beginning_of_week + i.days %>
-              <td class="status-column"><%= Promise.status_for(current_date, time) %></td>
-            <% end %>
-          </tr>
-        <% end %>
+      <%= week_calendar(events: @events) do |calendar| %>
+        <%= render 'simple_calendar/week_calendar', calendar: calendar %>
       <% end %>
     </div>
+
   </div>
 </div>
 
