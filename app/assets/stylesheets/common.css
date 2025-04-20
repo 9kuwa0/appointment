@@ -1,5 +1,6 @@
 * {
   list-style: none;
+  box-sizing: border-box;
 }
 
 a {
@@ -37,10 +38,12 @@ a {
 }
 
 .header-lists {
+  margin-right: 40px;
   display: flex;
 }
 
 .header-list {
+  font-size: 20px;
   margin-left: 20px;
 }
 

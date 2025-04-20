@@ -10,7 +10,8 @@
         <%= render "shared/error_message", model: f.object %>
 
         <div class="form-field">
-          患者名 <%=  "#{@patient.patient_last_name_kana} #{@patient.patient_first_name_kana}" %>様
+          <label class="form-name">患者名</label>
+            <%= "#{@patient.patient_last_name_kana} #{@patient.patient_first_name_kana}" %>様
         </div>
         <%= form_with model: @promise, url: promises_path, local: true do |f| %>
           <%= f.hidden_field :patient_id, value: @patient.id %>
@@ -30,27 +31,20 @@
       <% end %>
     </div>
 
-    <div class="calendar">
-      <%= week_calendar events: @promises do |date| %>
-        <% times.each do |time| %>
-          <tr>
-              <td><%= time.name %></td>
-            <% 7.times do |i| %>
-              <% current_date = date.beginning_of_week + i.days %>
-              <td><%= Promise.status_for(current_date, time) %></td>
-            <% end %>
-          </tr>
-        <% end %>
+    <div class="content">
+      <%= week_calendar(events: @events) do |calendar| %>
+        <%= render 'simple_calendar/week_calendar', calendar: calendar %>
       <% end %>
     </div>
 
-    <div class="content">
+    <div class="sub-content">
       <ul>
         <li>○ 予約可</li>
         <li>△ あと少し</li>
         <li>× 不可</li>
       </ul>
     </div>
+
   </div>
 </div>
 
