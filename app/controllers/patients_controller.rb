@@ -53,12 +53,11 @@ class PatientsController < ApplicationController
     end
   end
 
-
   private
 
   def authenticate_user!
-    unless staff_member_signed_in? || family_signed_in?
-      redirect_to root_path
+    if family_signed_in?
+      redirect_to promises_path
     end
   end
 
