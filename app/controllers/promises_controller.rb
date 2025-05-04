@@ -55,8 +55,8 @@ class PromisesController < ApplicationController
   private
 
   def authenticate_user!
-    unless staff_member_signed_in? || family_signed_in?
-      redirect_to root_path
+    if staff_member_signed_in?
+      redirect_to patients_path
     end
   end
 
