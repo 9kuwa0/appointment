@@ -1,4 +1,6 @@
 class PromisesController < ApplicationController
+  
+  before_action :authenticate_user!
   before_action :set_promise, only:[:show, :edit, :update, :destroy]
   
   def index
@@ -51,6 +53,14 @@ class PromisesController < ApplicationController
 
 
   private
+
+  def authenticate_user!
+    if staff_member_signed_in?
+      redirect_to patients_path
+    elsif !family_signed_in?
+      redirect_to root_path
+    end
+  end
 
   def promise_params
     params.require(:promise).permit(:day, :meeting_time_id, :patient_id) 

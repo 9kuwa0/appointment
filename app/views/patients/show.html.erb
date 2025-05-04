@@ -29,8 +29,8 @@
         </table>
 
       <div class="form-actions">
-        <%= link_to "編集する", edit_patient_path(@patient), class: "action-btn edit-btn" %>
-        <%= link_to "削除する", patient_path(@patient.id), data: { turbo_method: :delete }, class: "action-btn delete-btn" %>
+        <%= link_to "編集する", edit_patient_path(@patient), class: "btn" %>
+        <%= link_to "削除する", patient_path(@patient.id), data: { turbo_method: :delete }, class: "btn" %>
       </div>
     </div>
   </div>
