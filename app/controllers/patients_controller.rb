@@ -1,5 +1,6 @@
 class PatientsController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
   def index
     @patients = Patient.order(:room)
@@ -54,6 +55,12 @@ class PatientsController < ApplicationController
 
 
   private
+
+  def authenticate_user!
+    unless staff_member_signed_in? || family_signed_in?
+      redirect_to root_path
+    end
+  end
 
   def patient_params
     params.require(:patient).permit(:patient_number, :patient_last_name, :patient_first_name, :patient_last_name_kana, :patient_first_name_kana, :birthday, :floor, :room)
