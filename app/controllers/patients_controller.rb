@@ -58,6 +58,8 @@ class PatientsController < ApplicationController
   def authenticate_user!
     if family_signed_in?
       redirect_to promises_path
+    elsif !staff_member_signed_in?
+      redirect_to root_path
     end
   end
 
