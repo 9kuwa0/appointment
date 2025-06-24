@@ -1,27 +1,25 @@
-# frozen_string_literal: true
+class StaffMembers::SessionsController < ApplicationController
 
-class StaffMembers::SessionsController < Devise::SessionsController
-  before_action :configure_sign_in_params, only: [:create]
-  # skip_before_action :authenticate_staff_member!, only: [:new, :create, :destroy]
-
-  # GET /resource/sign_in
   def new
-    super
+    @staff_member = StaffMember.new
   end
 
-  # POST /resource/sign_in
   def create
-    super
+    @staff_member = StaffMember.find_by(email: params[:staff_member][:email])
+
+    if @staff_member&.valid_password?(params[:staff_member][:password])
+      sign_in(:staff_member, @staff_member)
+      redirect_to promises_path
+    else
+      @staff_member = StaffMember.new(email: params[:staff_member][:email])
+      @staff_member.errors.add(:base, "メールアドレスまたはパスワードが正しくありません")
+      render :new, status: :unprocessable_entity
+    end
   end
 
-  # DELETE /resource/sign_out
   def destroy
-    super
+    sign_out(:staff_member)
+    redirect_to root_path
   end
 
-  private
-  
-  def configure_sign_in_params
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password])
-  end
 end
