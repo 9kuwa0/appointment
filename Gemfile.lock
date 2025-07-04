@@ -263,6 +263,7 @@ DEPENDENCIES
   devise
   importmap-rails
   jbuilder
+  logger (~> 1.7)
   mysql2 (~> 0.5)
   pry-rails
   puma (~> 5.0)
