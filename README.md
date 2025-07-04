@@ -87,8 +87,9 @@ https://docs.google.com/spreadsheets/d/1jGwedmSThwS4Qy18OXHkuSJDIkHuTig8F3z3t-nI
 [![Image from Gyazo](https://i.gyazo.com/24b212d81692949f7f69a954d41b8739.png)](https://gyazo.com/24b212d81692949f7f69a954d41b8739)
 
 # 実装予定の機能
-- 単体テスト
-- ファミリーでログイン中に別のファミリーアカウントのページに遷移できる問題の解消
+- 中間テーブル
+- アクティブハッシュ
+- deviceモデルを2つ作成する
 
 # 開発環境
 - Ruby on Rails
