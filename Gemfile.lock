@@ -116,6 +116,7 @@ GEM
     jbuilder (2.13.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    kgio (2.11.4)
     logger (1.7.0)
     loofah (2.24.1)
       crass (~> 1.0.2)
@@ -145,7 +146,6 @@ GEM
     nokogiri (1.18.8-x86_64-darwin)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    pg (1.5.9)
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
@@ -192,6 +192,7 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0)
       zeitwerk (~> 2.5)
+    raindrops (0.20.1)
     rake (13.3.0)
     rdoc (6.14.2)
       erb
@@ -228,6 +229,9 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    unicorn (6.1.0)
+      kgio (~> 2.6)
+      raindrops (~> 0.7)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.1)
@@ -260,7 +264,6 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   mysql2 (~> 0.5)
-  pg
   pry-rails
   puma (~> 5.0)
   rails (~> 7.0.0)
@@ -270,6 +273,7 @@ DEPENDENCIES
   stimulus-rails
   turbo-rails
   tzinfo-data
+  unicorn (= 6.1.0)
   web-console
   webdrivers
 
