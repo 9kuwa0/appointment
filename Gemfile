@@ -77,5 +77,5 @@ gem 'active_hash'
 gem 'simple_calendar'
 
 group :production do
-  gem 'unicorn', '6.1.0'
+  gem 'pg'
 end
