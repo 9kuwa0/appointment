@@ -19,5 +19,4 @@ class Family < ApplicationRecord
     validates :family_first_name_kana
   end
 
-
 end

@@ -18,6 +18,14 @@ ja:
         staff_first_name: 名
         staff_department_id: 部署
         staff_affiliation_id: 所属
+      family:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        family_last_name: 姓
+        family_first_name: 名
+        family_last_name_kana: セイ
+        family_first_name_kana: メイ
     errors:
       models:
         patient:
