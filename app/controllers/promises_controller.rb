@@ -2,6 +2,7 @@ class PromisesController < ApplicationController
   
   before_action :authenticate_user!
   before_action :set_promise, only:[:show, :edit, :update, :destroy]
+  before_action :authorize_family!, only:[:show, :edit, :update, :destroy]
   
   def index
     @promises = current_family.promises.includes(:patient).where("day >= ?", Date.today).order(day: :ASC, meeting_time_id: :ASC)
@@ -68,5 +69,11 @@ class PromisesController < ApplicationController
 
   def set_promise
     @promise = Promise.find(params[:id])
+  end
+
+  def authorize_family!
+    unless @promise.family_id == current_family.id
+      redirect_back fallback_location: root_path
+    end
   end
 end
