@@ -6,7 +6,7 @@ class CreatePatients < ActiveRecord::Migration[7.0]
       t.string  :patient_first_name,      null: false
       t.string  :patient_last_name_kana,  null: false
       t.string  :patient_first_name_kana, null: false
-      t.date    :birthday, null: false
+      t.date    :birthday,                null: false
       t.integer :floor
       t.integer :room
       t.timestamps

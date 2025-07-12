@@ -9,6 +9,7 @@ ja:
         patient_first_name_kana: メイ
         floor: 階
         room: 病室
+        birthday: 生年月日
       staff_member:
         email: メールアドレス
         password: パスワード
