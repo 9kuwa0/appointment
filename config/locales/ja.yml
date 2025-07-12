@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    attributes:
+      patient:
+        patient_number: 患者ID
+        patient_last_name: 姓
+        patient_first_name: 名
+        patient_last_name_kana: セイ
+        patient_first_name_kana: メイ
+        floor: 階
+        room: 病室
+    errors:
+      models:
+        patient:
+          attributes:
+            floor:
+              inclusion: "は3〜5を入力してください"
+            room:
+              numericality: "は300〜599の数値で入力してください"

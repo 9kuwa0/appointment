@@ -13,10 +13,11 @@ class Patient < ApplicationRecord
     validates :birthday
   end
 
+  validates :patient_number, format: {with: /\A\d{6}\z/, message: "は6桁の数字で入力してください"}
+
   with_options format: {with: /\A[0-9]+\z/} do
-    validates :patient_number
-    validates :floor
-    validates :room
+    validates :floor, inclusion: {in: [3, 4, 5]}
+    validates :room, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 599}
   end
 
   with_options format: { with: /\A[ァ-ヶー-]+\z/ } do
