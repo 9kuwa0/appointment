@@ -27,6 +27,9 @@
     <div class="content">
       <h3 class="content-title">予約変更後</h3>
       <%= form_with model: @promise, local: true do |f| %>
+
+        <%= render "shared/error_message", model: f.object %>
+
         <div class="form-field">
           <label class="form-name">面会日</label>
           <%= f.date_field :day %>
@@ -40,6 +43,19 @@
         </div>
       <% end %>
     </div>
+  </div>
+  <div class="content">
+    <%= week_calendar(events: @events) do |calendar| %>
+      <%= render 'simple_calendar/week_calendar', calendar: calendar %>
+    <% end %>
+  </div>
+
+  <div class="sub-content">
+    <ul>
+      <li>○ 予約可</li>
+      <li>△ あと少し</li>
+      <li>× 不可</li>
+    </ul>
   </div>
 </div>
 

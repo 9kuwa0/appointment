@@ -1,0 +1,37 @@
+ja:
+  activerecord:
+    attributes:
+      patient:
+        patient_number: 患者ID
+        patient_last_name: 姓
+        patient_first_name: 名
+        patient_last_name_kana: セイ
+        patient_first_name_kana: メイ
+        floor: 階
+        room: 病室
+      staff_member:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        staff_number: ID
+        staff_last_name: 姓
+        staff_first_name: 名
+        staff_department_id: 部署
+        staff_affiliation_id: 所属
+      family:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        family_last_name: 姓
+        family_first_name: 名
+        family_last_name_kana: セイ
+        family_first_name_kana: メイ
+      promise:
+        day: 日にち
+        meeting_time_id: 面会時間
+    errors:
+      models:
+        patient:
+          attributes:
+            floor:
+              inclusion: "は3〜5を入力してください"

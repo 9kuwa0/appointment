@@ -1,27 +1,25 @@
-# frozen_string_literal: true
+class Families::SessionsController < ApplicationController
 
-class Families::SessionsController < Devise::SessionsController
-  before_action :configure_sign_in_params, only: [:create]
-  # skip_before_action :authenticate_family!, only: [:new, :create, :destroy]
-
-  # GET /resource/sign_in
   def new
-    super
+    @family = Family.new
   end
 
-  # POST /resource/sign_in
   def create
-    super
+    @family = Family.find_by(email: params[:family][:email])
+
+    if @family&.valid_password?(params[:family][:password])
+      sign_in(:family, @family)
+      redirect_to patients_path
+    else
+      @family = Family.new(email: params[:family][:email])
+      @family.errors.add(:base, "メールアドレスまたはパスワードが正しくありません")
+      render :new, status: :unprocessable_entity
+    end
   end
 
-  # DELETE /resource/sign_out
   def destroy
-    super
+    sign_out(:family)
+    redirect_to root_path
   end
 
-  private
-  
-  def configure_sign_in_params
-    devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password])
-  end
 end

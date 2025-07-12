@@ -5,7 +5,7 @@
     <h1 class="title">職員ログイン</h1>
 
     <div class="content">
-      <%= form_with model: resource, url: staff_member_session_path, class: "registration-main", local: true, data: { turbo: false } do |f| %>
+      <%= form_with model: @staff_member, url: staff_member_session_path, class: "registration-main", local: true, data: { turbo: false } do |f| %>
 
       <%= render "shared/error_message", model: f.object %>
 
