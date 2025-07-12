@@ -5,11 +5,19 @@
   インターネット上で面会予約ができる。
 
 # URL
-  作製前
+  https://appointment-amm6.onrender.com
+
+# Basic認証
+  ID : 9admin0
+  password : 19900509
 
 # テスト用アカウント
-  メールアドレス : 作成前
-  パスワード : 作成前  
+  スタッフ
+    メールアドレス : aaa@aaa
+    パスワード : aaa111
+  患者家族
+    メールアドレス : a@a
+    パスワード : aaa111
 
 # 利用方法
 ### スタッフアカウント
@@ -19,16 +27,16 @@
   * 面会予約、一覧表示、詳細表示、変更、削除
 
 # アプリケーション作製の背景
-当院では、面会を完全予約制としていた時期があり、その予約方法は  
-患者家族が病院へ電話する　→ 事務が受け、病棟へ繋ぐ　→ 看護師が確認が面会可能か確認する　→ 承諾する  
-といった流れであった。しばしば事務・看護業務が滞ることがあり、ネットで予約できる機能があると良いのではと考えた。
+  当院では、面会を完全予約制としていた時期があり、その予約方法は  
+  患者家族が病院へ電話する　→ 事務が受け、病棟へ繋ぐ　→ 看護師が確認が面会可能か確認する　→ 承諾する  
+  といった流れであった。しばしば事務・看護業務が滞ることがあり、ネットで予約できる機能があると良いのではと考えた。
 
 # 要件シート
-https://docs.google.com/spreadsheets/d/1jGwedmSThwS4Qy18OXHkuSJDIkHuTig8F3z3t-nIO1A/edit?gid=1785908763#gid=1785908763
+  https://docs.google.com/spreadsheets/d/1jGwedmSThwS4Qy18OXHkuSJDIkHuTig8F3z3t-nIO1A/edit?gid=982722306#gid=982722306
 
 # データベース設計
 ## ER図
-[![Image from Gyazo](https://i.gyazo.com/ddcbf55b034de13699aeae1399da7748.png)](https://gyazo.com/ddcbf55b034de13699aeae1399da7748)
+  https://i.gyazo.com/fbf375d6919b05a9bdb3de2e6a1dc6e3.png
 
 ## テーブル
 ### staff_members
@@ -84,24 +92,10 @@ https://docs.google.com/spreadsheets/d/1jGwedmSThwS4Qy18OXHkuSJDIkHuTig8F3z3t-nI
 - belongs_to :patient
 
 # 画面遷移図
-[![Image from Gyazo](https://i.gyazo.com/24b212d81692949f7f69a954d41b8739.png)](https://gyazo.com/24b212d81692949f7f69a954d41b8739)
+  https://i.gyazo.com/cf895fd5fb7a979e0d2c52c79b73d876.png
 
 # 実装予定の機能
-- 中間テーブル
-- アクティブハッシュ
-- deviceモデルを2つ作成する
+  結合テスト
 
 # 開発環境
 - Ruby on Rails
-
-# 工夫した点
-- 学習したことをなるべく詰め込もうと考え中
-
-# ローカルでの動作方法
-作成中
-
-# 改善点
-作成中
-
-# 作成時間
-作成中
