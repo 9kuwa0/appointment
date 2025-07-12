@@ -7,7 +7,7 @@ RSpec.describe StaffMember, type: :model do
 
   describe 'スタッフ新規登録' do
       # スタッフ登録正常系
-    context '新規登録できる場合' do
+    context 'スタッフの新規登録できる場合' do
       it 'すべての情報が正しく入力されていれば登録できる' do
         expect(@staff_member).to be_valid
       end
