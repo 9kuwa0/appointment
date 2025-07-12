@@ -26,10 +26,12 @@ ja:
         family_first_name: 名
         family_last_name_kana: セイ
         family_first_name_kana: メイ
+      promise:
+        day: 日にち
+        meeting_time_id: 面会時間
     errors:
       models:
         patient:
           attributes:
             floor:
               inclusion: "は3〜5を入力してください"
-
